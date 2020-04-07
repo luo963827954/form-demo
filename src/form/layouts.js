@@ -4,11 +4,12 @@ export const createRow = function (h) {
 }
 
 export const createCol = function (h) {
-  const { columns = [], formData } = this.props;
+  const { columns = [], formData,showDetails } = this.props;
   console.log(columns, 'createCol');
 
   if (Array.isArray(columns) && columns.length) {
     return columns.map((column) => {
+
       return h('Col', {
         style: {
           height: '58px'
@@ -24,6 +25,7 @@ export const createCol = function (h) {
         }
       }, [createTags.call(this, h, {
         column,
+        showDetails,
         row: formData
       })])])
     })
@@ -31,11 +33,12 @@ export const createCol = function (h) {
 }
 
 
-export function createTags(h, { column, row = {} }) {
+export function createTags(h, { column, row = {},showDetails }) {
   return h('BaseItem', {
     props: {
       row,
       column,
+      showDetails,
     }
   })
 }

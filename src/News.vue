@@ -3,8 +3,8 @@
     <FormItem label="Name" prop="name">
       <Input v-model="formValidate.name" placeholder="Enter your name"></Input>
     </FormItem>
-    <FormItem label="E-mail" prop="mail">
-      <Input v-model="formValidate.mail" placeholder="Enter your e-mail"></Input>
+    <FormItem label="Switch" prop="mail">
+      <Switch size="large" />
     </FormItem>
     <FormItem label="City" prop="city">
       <Select v-model="formValidate.city" placeholder="Select your city">

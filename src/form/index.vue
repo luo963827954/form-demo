@@ -10,21 +10,19 @@ export default {
     }
 
     if (!context.data.attrs.labelWidth) {
-      context.data.attrs.labelWidth = 100;
+      context.data.attrs.labelWidth = 120;
     }
     console.log(context, "form form");
     return h("Form", context.data, [layouts.createRow.call(context, h)]);
   },
   props: {
     formData: Object,
+    showDetails:Boolean,
     columns: {
       type: Array,
       required: true,
       default: () => []
     }
-  },
-  mounted() {
-    console.log(this.$refs);
   }
 };
 </script>

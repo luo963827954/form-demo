@@ -3,13 +3,9 @@
 <script>
 export default {
   render(h) {
-    return h("Input", {
-      props: {
-        placeholder: "请输入姓名",
-        maxLength: 10,
-        showWordLimit: true
-      }
-    });
+    return h("Select",{  
+      value:'0'
+    },[h('Option',{value:'0'},'百度')])
   },
   methods: {
     handleChange() {

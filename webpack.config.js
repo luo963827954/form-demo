@@ -40,7 +40,13 @@ module.exports = {
       {
         test: /\.(woff|woff2|eot|otf|ttf)$/,
         use: 'file-loader'
-      }
+      },
+      {
+        loader: 'iview-loader',
+        options: {
+            prefix: false
+        }
+    }
     ]
   },
   resolve: {
