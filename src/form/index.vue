@@ -17,6 +17,7 @@ export default {
   },
   props: {
     formData: Object,
+    span:Number,
     showDetails:Boolean,
     columns: {
       type: Array,

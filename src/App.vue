@@ -4,9 +4,21 @@
     </div>
     <router-view></router-view>
     <div class="box">
-      <div>{{JSON.stringify(formData)}}</div>
-      <BaseForm ref="formValidate" :formData="formData" :columns="columns" />
-      <Button @click="handleSubmit('formValidate')">按钮</Button>
+      <Icon custom="ivu-icon i-icon i-icon-shop_fill" size="24" />
+    <Modal :value="true" :width="1000">
+      <BaseForm 
+        ref="formValidate" 
+        :formData="formData" 
+        :showDetails="true" 
+        :columns="columns"
+      >
+      <template #input="{row}">
+        <div>
+          {{row.input}}
+        </div>
+      </template>
+      </BaseForm>
+     </Modal>
     </div>
   </div>
 </template>
@@ -23,7 +35,7 @@ export default {
   },
   data() {
     return {
-      formData: {"checkbox":["2"],"Cascader":["zhejiang","hangzhou","xihu"],"input":"水电费水电费水电费","radio":"2","AutoComplete":"Vue","DatePicker":"2020-04-13T16:00:00.000Z","InputNumber":1323,"TimePicker":"00:02:02","select":["2"],"Rate":5,"switch":true},
+      formData:{'input':'22222222222'},
       columns: [
         {
           element: "Input",
@@ -31,7 +43,12 @@ export default {
           prop: "input",
           rules:[
             { required: true, message: 'The name cannot be empty', trigger: 'blur' }
-          ]
+          ],
+          options:[
+            { label:'1' , text: "React" },
+            { label: '2', text: "Vue" },
+            { label:'3', text: "Webpack" },
+          ],
         },
         {
           element: "Radio",
@@ -70,28 +87,23 @@ export default {
           prop:'select',
           multiple:true,
           options:[
-            { label:'1' , text: "React" },
-            { label: '2', text: "Vue" },
-            { label:'3', text: "Webpack" },
+            {
+              title:"框架",
+              options:[
+                { label:'1' , text: "React" },
+                { label: '2', text: "Vue" },
+                { label:'3', text: "Webpack" },
+              ]
+            },
+            {
+              title:"BAT",
+              options:[
+                { label: Math.random() , text: "百度" },
+                { label: Math.random() , text: "阿里巴巴" },
+                { label: Math.random() , text: "腾讯" },
+              ]
+            },
           ],
-          // options:[
-          //   {
-          //     title:"框架",
-          //     options:[
-          //       { label:'1' , text: "React" },
-          //       { label: '2', text: "Vue" },
-          //       { label:'3', text: "Webpack" },
-          //     ]
-          //   },
-          //   {
-          //     title:"BAT",
-          //     options:[
-          //       { label: Math.random() , text: "百度" },
-          //       { label: Math.random() , text: "阿里巴巴" },
-          //       { label: Math.random() , text: "腾讯" },
-          //     ]
-          //   },
-          // ],
         },
         {
           element: "AutoComplete",

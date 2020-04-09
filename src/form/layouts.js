@@ -4,7 +4,7 @@ export const createRow = function (h) {
 }
 
 export const createCol = function (h) {
-  const { columns = [], formData,showDetails } = this.props;
+  const { columns = [], formData,showDetails,span } = this.props;
   console.log(columns, 'createCol');
 
   if (Array.isArray(columns) && columns.length) {
@@ -15,7 +15,7 @@ export const createCol = function (h) {
           height: '58px'
         },
         props: {
-          span: 12,
+          span: column.span || span || 12,
           ...column,
         },
         key: column.prop,
@@ -34,6 +34,18 @@ export const createCol = function (h) {
 
 
 export function createTags(h, { column, row = {},showDetails }) {
+  let VNode = null
+  const scopedSlots = this.scopedSlots || this.$scopedSlots
+  const slots = this.slots && this.slots();
+
+  if (scopedSlots && column.prop && scopedSlots[column.prop]) {
+    VNode = scopedSlots[column.prop]({ row, column })
+  } else if (slots && column.prop && slots[column.prop]) {
+    VNode = slots[column.prop]
+  }
+ 
+  if(VNode) return VNode ;
+
   return h('BaseItem', {
     props: {
       row,
